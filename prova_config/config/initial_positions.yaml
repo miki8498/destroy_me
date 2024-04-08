@@ -1,0 +1,11 @@
+# Default initial positions for dual's ros2_control fake system
+
+initial_positions:
+  ur_left_bl_to_leftFinger: 0
+  ur_left_elbow_joint: 0
+  ur_left_leftFinger_to_rightFinger: 0
+  ur_left_shoulder_lift_joint: 0
+  ur_left_shoulder_pan_joint: 0
+  ur_left_wrist_1_joint: 0
+  ur_left_wrist_2_joint: 0
+  ur_left_wrist_3_joint: 0

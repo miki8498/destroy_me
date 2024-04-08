@@ -1,0 +1,77 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <model name="cable">
+    <link name="1_point">
+      <inertial>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>0.000166667</ixx>
+          <iyy>0.000166667</iyy>
+          <izz>0.000166667</izz>
+        </inertia>
+      </inertial> 
+      <collision name="collision_00">
+        <geometry>
+          <cylinder>
+            <radius>0.005</radius>
+            <length>0.1</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="visual_00">
+        <geometry>
+          <cylinder>
+            <radius>0.005</radius>
+            <length>0.1</length>
+          </cylinder>
+        </geometry>
+        <!-- <material>
+          <script>Gazebo/Green</script>
+        </material> -->
+      </visual>
+      <gravity>1</gravity>
+    </link>
+
+    <joint name="joint_1" type="revolute">
+      <parent>1_point</parent>
+      <child>second_point::2_point</child>
+      <pose>0.0 0.0 0.0 0.0 0.0 0.0</pose>
+    </joint>
+
+    <model name="second_point">
+      <link name="2_point">
+        <pose>0.0 0.0 0.1 0 0 0</pose>
+        <gravity>1</gravity>
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+            <ixx>0.000166667</ixx>
+            <iyy>0.000166667</iyy>
+            <izz>0.000166667</izz>
+          </inertia>
+        </inertial> 
+        <collision name="collision_00">
+          <geometry>
+            <cylinder>
+              <radius>0.005</radius>
+              <length>0.1</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual_00">
+          <geometry>
+            <cylinder>
+              <radius>0.005</radius>
+              <length>0.1</length>
+            </cylinder>
+          </geometry>
+          <!-- <material>
+            <script>Gazebo/Green</script>
+          </material> -->
+        </visual>
+     
+      </link>
+    </model>
+ 
+  </model>
+</sdf>

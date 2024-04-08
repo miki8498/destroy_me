@@ -1,0 +1,90 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <model name="distorted_camera">
+    <link name="camera_link">
+      <inertial>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>0.000166667</ixx>
+          <iyy>0.000166667</iyy>
+          <izz>0.000166667</izz>
+        </inertia>
+      </inertial> 
+      <collision name="collision_00">
+        <geometry>
+          <box>
+            <size>0.1 0.1 0.1</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual_00">
+        <geometry>
+          <box>
+            <size>0.1 0.1 0.1</size>
+          </box>
+        </geometry>
+      </visual>
+      <gravity>0</gravity>
+    </link>
+
+    <joint name="joint_00" type="fixed">
+      <parent>camera_link</parent>
+      <child>camera_link_optical::camera_link_optical</child>
+      <pose>0.0 0.0 0.0 0.0 0.0 0.0</pose>
+    </joint>
+
+    <model name="camera_link_optical">
+      <link name="camera_link_optical">
+        <gravity>0</gravity>
+        <sensor name="camera" type="depth">
+        
+          <pose frame="">0 0 0 0 0 0</pose>
+          <update_rate>30</update_rate>
+          <camera name="head">
+            <horizontal_fov>1.047</horizontal_fov>
+            <image>
+              <width>800</width>
+              <height>800</height>
+              <format>R8G8B8</format>
+            </image>
+            <clip>
+              <near>0.1</near>
+              <far>100</far>
+            </clip>
+            <noise>
+              <type>gaussian</type>
+              <mean>0.0</mean>
+              <stddev>0.007</stddev>
+            </noise>
+          </camera>
+          <plugin name="photoneo_camera" filename="libgazebo_ros_camera.so">
+              <alwaysOn>true</alwaysOn>
+              <updateRate>0.0</updateRate>
+              <cameraName>rrbot/camera1</cameraName>
+              <imageTopicName>image_raw</imageTopicName>
+              <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+              <depthImageTopicName>camera1/depth/image_raw</depthImageTopicName>
+              <depthImageInfoTopicName>camera1/depth/camera_info</depthImageInfoTopicName>
+              <pointCloudTopicName>camera1/depth/points</pointCloudTopicName>
+              <frameName>camera_link_optical</frameName>
+              <pointCloudCutoff>0.1</pointCloudCutoff>
+              <pointCloudCutoffMax>5.0</pointCloudCutoffMax>
+              <hackBaseline>0.07</hackBaseline>
+              <distortionK1>0.0</distortionK1>
+              <distortionK2>0.0</distortionK2>
+              <distortionK3>0.0</distortionK3>
+              <distortionT1>0.0</distortionT1>
+              <distortionT2>0.0</distortionT2>
+              <hack_baseline>0.07</hack_baseline>
+              <min_depth>0.01</min_depth>
+              <max_depth>5.0</max_depth>
+            </plugin>
+          <always_on>1</always_on>
+        
+          <visualize>true</visualize>
+        </sensor>
+      </link>
+    </model>
+ 
+  </model>
+</sdf>

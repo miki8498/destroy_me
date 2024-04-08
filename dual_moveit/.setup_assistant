@@ -1,0 +1,10 @@
+moveit_setup_assistant_config:
+  urdf:
+    package: ur
+    relative_path: xacro/dual_env.urdf.xacro
+  srdf:
+    relative_path: config/dual.srdf
+  package_settings:
+    author_name: mk
+    author_email: michela.cavuoto2@unibo.it
+    generated_timestamp: 1711116560

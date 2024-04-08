@@ -1,0 +1,34 @@
+# This config file is used by ros2_control
+controller_manager:
+  ros__parameters:
+    update_rate: 500  # Hz
+
+    # ur_right_joint_group_pos_controller:
+    #   type: position_controllers/JointGroupPositionController
+
+    cable_joint_group_vel_controller:
+      type: velocity_controllers/JointGroupVelocityController
+
+
+
+ur_left_joint_group_pos_controller:
+  ros__parameters:
+    joints:
+      - ur_left_shoulder_pan_joint
+      - ur_left_shoulder_lift_joint
+      - ur_left_elbow_joint
+      - ur_left_wrist_1_joint
+      - ur_left_wrist_2_joint
+      - ur_left_wrist_3_joint
+
+cable_joint_group_vel_controller:
+  ros__parameters:
+    joints:
+      - joint_1
+    
+    pid_gains:
+      joint_1: {p: 1000.0, i: 0.01, d: 10.0}
+  
+    interface_name: velocity
+
+    
